@@ -23,7 +23,7 @@ set splitright
 set splitbelow
 
 " Default Shell
-set shell=zsh
+set shell=bash
 
 " True Color
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
