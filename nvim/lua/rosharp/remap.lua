@@ -40,4 +40,12 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- give permissions with chmod
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>c", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- run current buffer in python
+vim.keymap.set("n", "<leader>x", "<cmd>terminal python3 %:.<CR>")
+
+-- save with ctrl+s
+vim.keymap.set("n", "<C-s>", "<cmd>:w<cr>")
+vim.keymap.set("i", "<C-s>", "<cmd>:w<cr>")
+vim.keymap.set("v", "<C-s>", "<cmd>:w<cr>")
