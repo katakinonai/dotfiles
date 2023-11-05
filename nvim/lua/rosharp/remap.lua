@@ -49,3 +49,10 @@ vim.keymap.set("n", "<leader>x", "<cmd>terminal python3 %:.<CR>")
 vim.keymap.set("n", "<C-s>", "<cmd>:w<cr>")
 vim.keymap.set("i", "<C-s>", "<cmd>:w<cr>")
 vim.keymap.set("v", "<C-s>", "<cmd>:w<cr>")
+
+-- splits
+vim.keymap.set("n", "<C-w>_", "<cmd>vsplit<cr><C-w>L")
+vim.keymap.set("n", "<C-w>-", "<cmd>split<cr><C-w>J")
+
+-- terminal
+vim.keymap.set("n", "<C-t>", "<cmd>split<cr><C-w>J<cmd>terminal<cr>")
