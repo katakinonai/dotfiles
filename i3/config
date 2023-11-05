@@ -27,7 +27,7 @@ gaps outer $outer_gap
 
 floating_modifier $mod
 
-smart_gaps off
+smart_gaps on
 smart_borders on
 
 default_border pixel $border
@@ -35,17 +35,18 @@ default_floating_border pixel $floating_border
 
 font pango: Roboto Nerd Font $i3_font
 
-exec --no-startup-id bass source ~/.nvm/nvm.sh -- no-use
+# exec --no-startup-id bass source ~/.nvm/nvm.sh -- no-use
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/9pzfvfavjgn71.png
-exec --no-startup-id emacs --daemon
-exec --no-startup-id nm-applet
+# exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/9pzfvfavjgn71.png
+# exec --no-startup-id nm-applet
 exec --no-startup-id xbanish
 # exec --no-startup-id feh --randomize --bg-scale ~/Pictures/*
-exec --no-startup-id picom -b
-exec --no-startup-id bash ~/.config/polybar/launch.sh --shapes
+# exec --no-startup-id picom -b
+# exec --no-startup-id bash ~/.config/polybar/launch.sh --shapes
 # exec --no-startup-id xborders -c ~/.config/xborders/config.json
 # exec xset s off -dpms
+
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 
 bindsym Mod1+Shift+g mode "$mode_gaps"
 
@@ -107,13 +108,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym $mod+Return                     exec i3-sensible-terminal
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10 # decrease screen brightness
+
+bindsym $mod+Return                     exec konsole
 bindsym $mod+o move                     workspace to output right
-bindsym $mod+Shift+e                    exec emacsclient -c
 bindsym $mod+shift+w                    exec firefox-esr
-bindsym $mod+shift+t                    exec cd ~/.config/tor-browser/ && ./start-tor-browser.desktop
 bindsym Mod1+r                          exec st -e ranger
-bindsym Mod1+f                          exec thunar
+bindsym Mod1+f                          exec dolphin 
 bindsym $mod+Shift+q                    kill
 bindsym $mod+d                          exec --no-startup-id rofi -show drun
 bindsym Mod1+Tab                        exec --no-startup-id  i3-msg border pixel 5; focus right
@@ -189,6 +191,10 @@ bindsym $mod+Shift+r restart
 #         -p root.path=/ time.format="%H:%M CW %V" date.format="%a, %b %d %Y" \
 #         -t iceberg
 # }
+
+bar {
+        status_command i3status
+}
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
